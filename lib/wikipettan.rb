@@ -1,5 +1,8 @@
 require "wikipettan/version"
+require 'wikipettan/requester'
 
 module Wikipettan
-  # Your code goes here...
+  def self.category_members
+    puts "Hello, World!"
+  end
 end
