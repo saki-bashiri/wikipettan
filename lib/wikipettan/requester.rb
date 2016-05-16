@@ -4,12 +4,12 @@ module Wikipettan
     BASE_URL = "https://ja.wikipedia.org/w/api.php"
     private_constant :BASE_URL
 
-    def initialize(query_params)
-      @query_params = query_params
+    def initialize(query)
+      @query = query
     end
 
     def request!
-      RestClient.get(BASE_URL, {params: @query_params.dup})
+      @response = RestClient.get(BASE_URL, {params: @query.api_params.dup})
     end
   end
 end

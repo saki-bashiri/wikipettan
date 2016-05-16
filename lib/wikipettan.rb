@@ -1,13 +1,13 @@
 require "wikipettan/version"
-require 'wikipettan/query'
+require 'wikipettan/category_query'
+require 'wikipettan/category_member_requester'
+require 'wikipettan/category_member_page'
 require 'wikipettan/requester'
 
 module Wikipettan
   class << self
-    def category_members(cmpageid)
-      query = Wikipettan::Query.new(cmpageid)
-      requester = Wikipettan::Requester.new(query.api_params)
-      requester.request!
+    def category_members(pageid: nil, title: nil)
+      Wikipettan::CategoryMember.members(requester.json)
     end
   end
 end
