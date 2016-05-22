@@ -1,10 +1,8 @@
 module Wikipettan
-  class CategoryMemberPage
-    attr_reader :pageids
-
+  class Category
     def initialize(pageid: nil, title: nil)
       @query = Wikipettan::CategoryQuery.new(pageid: pageid, title: title)
-      @pageids = []
+      @member_hashes = []
     end
 
     def all_request!
@@ -18,10 +16,20 @@ module Wikipettan
       end
     end
 
+    def member_ids
+      @member_hashes.map{|hash| hash["pageid"]}
+    end
+
+    def member_names
+      @member_hashes.map{|hash| hash["title"]}
+    end
+
+    private
+
     def push_pageids
       requester = Wikipettan::CategoryMemberRequester.new(@query)
       requester.request!
-      @pageids += requester.pageids
+      @member_hashes += requester.member_hashes
       requester
     end
   end

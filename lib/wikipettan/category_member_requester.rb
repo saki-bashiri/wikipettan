@@ -1,8 +1,9 @@
 require 'wikipettan/requester'
 module Wikipettan
   class CategoryMemberRequester < Wikipettan::Requester
-    def pageids
-      json["query"]["categorymembers"].map{|member| member["pageid"]}
+    def member_hashes
+      return [] unless json["query"]
+      json["query"]["categorymembers"]
     end
 
     def continue?
