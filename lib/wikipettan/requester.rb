@@ -9,7 +9,7 @@ module Wikipettan
     end
 
     def request!
-      RestClient.get(BASE_URL, @query.dup)
+      @response = RestClient.get(BASE_URL, {params: @query.api_params.dup})
     end
   end
 end
