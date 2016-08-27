@@ -22,7 +22,31 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### build category instance
+
+from category title
+```ruby
+category = Wikipettan.category(title: "日本の女性声優")
+```
+
+from category pageid
+```ruby
+category = Wikipettan.category(pageid: 676880)
+```
+
+### request to MediaWiki API
+
+```ruby
+category.all_request!
+```
+
+### get category_members
+
+```ruby
+category.members.each do |member|
+  puts "pageid: #{member.pageid}, title: #{member.title}"
+end
+```
 
 ## Development
 
