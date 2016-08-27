@@ -1,5 +1,5 @@
 require 'wikipettan/category_query'
-require 'wikipettan/category_member_requester'
+require 'wikipettan/requester/category_member_requester'
 module Wikipettan
   class Category
     attr_reader :members
@@ -21,7 +21,7 @@ module Wikipettan
 
     def get_members(cmcontinue: nil)
       query = member_query(cmcontinue: cmcontinue)
-      requester = Wikipettan::CategoryMemberRequester.new(query)
+      requester = Wikipettan::Requester::CategoryMemberRequester.new(query)
       requester.request!
 
       @members += requester.members
