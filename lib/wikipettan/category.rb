@@ -1,36 +1,35 @@
+require 'wikipettan/category_query'
+require 'wikipettan/category_member_requester'
 module Wikipettan
   class Category
+    attr_reader :members
+
     def initialize(pageid: nil, title: nil)
-      @query = Wikipettan::CategoryQuery.new(pageid: pageid, title: title)
-      @member_hashes = []
+      @pageid = pageid
+      @title = title
+      @members = []
     end
 
     def all_request!
-      100.times do
-        requester = push_pageids
-        if requester.continue?
-          @query.cmcontinue = requester.cmcontinue
-        else
-          break
-        end
+      requester = get_members
+      while requester.continue?
+        requester = get_members(cmcontinue: requester.cmcontinue)
       end
-    end
-
-    def member_ids
-      @member_hashes.map{|hash| hash["pageid"]}
-    end
-
-    def member_names
-      @member_hashes.map{|hash| hash["title"]}
     end
 
     private
 
-    def push_pageids
-      requester = Wikipettan::CategoryMemberRequester.new(@query)
+    def get_members(cmcontinue: nil)
+      query = member_query(cmcontinue: cmcontinue)
+      requester = Wikipettan::CategoryMemberRequester.new(query)
       requester.request!
-      @member_hashes += requester.member_hashes
+
+      @members += requester.members
       requester
+    end
+
+    def member_query(cmcontinue: nil)
+      Wikipettan::CategoryQuery.new(pageid: @pageid, title: @title, cmcontinue: cmcontinue)
     end
   end
 end

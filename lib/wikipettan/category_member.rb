@@ -1,10 +1,10 @@
 module Wikipettan
   class CategoryMember
-    def initialize(pageid)
-      @pageid = pageid
-    end
+    attr_reader :pageid, :title
 
-    def content
+    def initialize(pageid, title: nil)
+      @pageid = pageid
+      @title = title
     end
   end
 end

@@ -1,11 +1,11 @@
 module Wikipettan
   class CategoryQuery
     attr_reader :format
-    attr_writer :cmcontinue
 
-    def initialize(pageid: nil, title: nil)
+    def initialize(pageid: nil, title: nil, cmcontinue: nil)
       @pageid = pageid
       @title = title
+      @cmcontinue = cmcontinue
       @format = :json
     end
 
