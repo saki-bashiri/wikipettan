@@ -5,7 +5,9 @@ describe Wikipettan do
     expect(Wikipettan::VERSION).not_to be nil
   end
 
-  it 'does something useful' do
-    expect(false).to eq(true)
+  subject { Wikipettan.category(title: "hoge") }
+
+  it 'get a category' do
+    expect(subject).to be_a(Wikipettan::Category)
   end
 end
