@@ -6,17 +6,17 @@ require 'wikipettan/version'
 Gem::Specification.new do |spec|
   spec.name          = "wikipettan"
   spec.version       = Wikipettan::VERSION
-  spec.authors       = ["saki-bashiri"]
+  spec.authors       = ["yensaki"]
   spec.email         = [""]
 
   spec.summary       = %q{WikiPedia Data Crawler with  MediaWiki API.}
-  spec.description   = %q{ TODO: write this. }
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.description   = %q{ Get wikipedia data }
+  spec.homepage      = "https://github.com/yensaki/wikipettan"
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
   # delete this section to allow pushing this gem to any host.
   if spec.respond_to?(:metadata)
-    spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com'"
+    spec.metadata['allowed_push_host'] = "https://github.com/yensaki/wikipettan"
   else
     raise "RubyGems 2.0 or newer is required to protect against public gem pushes."
   end
