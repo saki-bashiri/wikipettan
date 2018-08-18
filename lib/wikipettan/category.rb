@@ -1,4 +1,4 @@
-require 'wikipettan/category_query'
+require 'wikipettan/query/category'
 require 'wikipettan/requester/category_member_requester'
 module Wikipettan
   class Category
@@ -29,7 +29,7 @@ module Wikipettan
     end
 
     def member_query(cmcontinue: nil)
-      Wikipettan::CategoryQuery.new(pageid: @pageid, title: @title, cmcontinue: cmcontinue)
+      Wikipettan::Query::Category.new(pageid: @pageid, title: @title, cmcontinue: cmcontinue)
     end
   end
 end

@@ -1,5 +1,6 @@
 require 'wikipettan/requester/base'
 require 'wikipettan/category_member'
+require 'json'
 module Wikipettan
   module Requester
     class CategoryMemberRequester < Wikipettan::Requester::Base
